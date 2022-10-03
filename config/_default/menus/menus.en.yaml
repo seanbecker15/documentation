@@ -923,9 +923,6 @@ main:
     url: serverless/enhanced_lambda_metrics
     parent: serverless
     weight: 3
-
-
-
   - name: Custom Metrics
     url: serverless/custom_metrics
     parent: serverless
@@ -969,13 +966,10 @@ main:
     url: serverless/libraries_integrations/cdk/
     parent: libraries_integrations
     weight: 605
-
-
   - name: Deployment Tracking
     url: serverless/deployment_tracking
     parent: serverless
     weight: 7
-
   - name: Azure App Service
     url: serverless/azure_app_services
     parent: serverless
@@ -991,7 +985,6 @@ main:
     parent: serverless
     identifier: serverless_troubleshooting
     weight: 10
-
   - name: Glossary
     url: serverless/glossary
     parent: serverless
@@ -7348,6 +7341,130 @@ api:
         - DownloadCloudWorkloadPolicyFile
       unstable: []
       order: 1
+  - name: Confluent Cloud Accounts API
+    url: /api/latest/confluent-cloud-accounts-api/
+    identifier: confluent-cloud-accounts-api
+    generated: true
+  - name: Update resource in Confluent account
+    url: '#update-resource-in-confluent-account'
+    identifier: confluent-cloud-accounts-api-update-resource-in-confluent-account
+    parent: confluent-cloud-accounts-api
+    generated: true
+    params:
+      versions:
+        - v2
+      operationids:
+        - UpdateConfluentResource
+      unstable: []
+      order: 0
+  - name: Get resource from Confluent account
+    url: '#get-resource-from-confluent-account'
+    identifier: confluent-cloud-accounts-api-get-resource-from-confluent-account
+    parent: confluent-cloud-accounts-api
+    generated: true
+    params:
+      versions:
+        - v2
+      operationids:
+        - GetConfluentResource
+      unstable: []
+      order: 0
+  - name: Delete resource from Confluent account
+    url: '#delete-resource-from-confluent-account'
+    identifier: confluent-cloud-accounts-api-delete-resource-from-confluent-account
+    parent: confluent-cloud-accounts-api
+    generated: true
+    params:
+      versions:
+        - v2
+      operationids:
+        - DeleteConfluentResource
+      unstable: []
+      order: 0
+  - name: Add resource to Confluent account
+    url: '#add-resource-to-confluent-account'
+    identifier: confluent-cloud-accounts-api-add-resource-to-confluent-account
+    parent: confluent-cloud-accounts-api
+    generated: true
+    params:
+      versions:
+        - v2
+      operationids:
+        - CreateConfluentResource
+      unstable: []
+      order: 0
+  - name: List Confluent Account resources
+    url: '#list-confluent-account-resources'
+    identifier: confluent-cloud-accounts-api-list-confluent-account-resources
+    parent: confluent-cloud-accounts-api
+    generated: true
+    params:
+      versions:
+        - v2
+      operationids:
+        - ListConfluentResource
+      unstable: []
+      order: 0
+  - name: Update Confluent account
+    url: '#update-confluent-account'
+    identifier: confluent-cloud-accounts-api-update-confluent-account
+    parent: confluent-cloud-accounts-api
+    generated: true
+    params:
+      versions:
+        - v2
+      operationids:
+        - UpdateConfluentAccount
+      unstable: []
+      order: 0
+  - name: Get Confluent account
+    url: '#get-confluent-account'
+    identifier: confluent-cloud-accounts-api-get-confluent-account
+    parent: confluent-cloud-accounts-api
+    generated: true
+    params:
+      versions:
+        - v2
+      operationids:
+        - GetConfluentAccount
+      unstable: []
+      order: 0
+  - name: Delete Confluent account
+    url: '#delete-confluent-account'
+    identifier: confluent-cloud-accounts-api-delete-confluent-account
+    parent: confluent-cloud-accounts-api
+    generated: true
+    params:
+      versions:
+        - v2
+      operationids:
+        - DeleteConfluentAccount
+      unstable: []
+      order: 0
+  - name: Add Confluent account
+    url: '#add-confluent-account'
+    identifier: confluent-cloud-accounts-api-add-confluent-account
+    parent: confluent-cloud-accounts-api
+    generated: true
+    params:
+      versions:
+        - v2
+      operationids:
+        - CreateConfluentAccount
+      unstable: []
+      order: 0
+  - name: List Confluent accounts
+    url: '#list-confluent-accounts'
+    identifier: confluent-cloud-accounts-api-list-confluent-accounts
+    parent: confluent-cloud-accounts-api
+    generated: true
+    params:
+      versions:
+        - v2
+      operationids:
+        - ListConfluentAccount
+      unstable: []
+      order: 0
   - name: Incident Services
     url: /api/latest/incident-services/
     identifier: incident-services
