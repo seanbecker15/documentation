@@ -41,4 +41,15 @@ You can now see events coming from the `runtime-security-agent` in the Log Explo
 
 {{< img src="security_platform/cws/self_test_logs.png" alt="Self test events in the Log Explorer" style="width:90%;">}}
 
+## Compatibility issues with Cilium 1.9 and lower
+
+There is a known race with Cilium 1.9 and lower with the Datadog Agent (version 7.36 to 7.39) that may happen when a new pod is started. The race can lead to loss of connectivity inside the pod, depending on how Cilium is configured.
+Although not easily reproducible, the race happens when the Network feature of Cloud Workload Security is enabled. Since there is no way to configure Cilium or Cloud Workload Security to prevent it from happening (for these versions), we recommend that you upgrade to Datadog Agent 7.40 or disable Cloud Workload Security with the following configuration (in `system-probe.yaml`):
+
+```yaml
+runtime_security_config:
+  network:
+    enabled: false
+```
+
 [1]: /agent/troubleshooting/send_a_flare/?tab=agentv6v7

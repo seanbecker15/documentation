@@ -43,6 +43,19 @@ There are three types of monitoring that the Datadog Agent uses for Cloud Worklo
   * CentOS/RHEL 7.6+
   * Custom kernel builds are not supported.
 
+If your Kubernetes Network plugin is Cilium:
+* Before Cilium 1.10, CWS network detections will not work inside your containers.
+* From Cilium 1.10 to Cilium 1.X, you'll need to update your Cilium configuration with "..."
+* Above Cilium 1.X, CWS network detections will work out of the box.
+
+If you run a third party Kubernetes network plugin:
+* Check with your vendor if they leverage eBPF Traffic Control classifiers. If not, you can ignore this paragraph.
+* Check with your vendor if they return TC_ACT_OK or TC_ACT_UNSPEC after granting access to a network packet. If the answer is TC_ACT_UNSPEC, you can ignore this paragraph.
+* Check with your vendor on which priority they attach their eBPF classifiers:
+  * If they use priority 1, CWS network detections will not work inside your containers.
+  * If they use priority 2 to 10, make sure to configure `runtime_security_config.network.classifier_priority` to a number strictly below the priority chosen by your vendor.
+  * If they use priority 11 or higher, you can ignore this paragraph.
+
 ## Installation
 
 {{< tabs >}}
@@ -60,7 +73,7 @@ There are three types of monitoring that the Datadog Agent uses for Cloud Worklo
       securityAgent:
         runtime:
           enabled: true
-          
+
     # Add this to enable the collection of CWS network events, only for Datadog Agent version 7.36
           network:
             enabled: true
@@ -120,7 +133,7 @@ By default Runtime Security is disabled. To enable it, both the datadog.yaml and
 
 echo "runtime_security_config.enabled: true" >> /etc/datadog-agent/security-agent.yaml
 echo "runtime_security_config.enabled: true" >> /etc/datadog-agent/system-probe.yaml
-  
+
 # For [Datadog Agent][1] version 7.36 only, to enable the collection of CWS network events
 echo "runtime_security_config.network.enabled: true" >> /etc/datadog-agent/system-probe.yaml
 
@@ -140,10 +153,10 @@ For a package-based deployment, the Datadog package has to be deployed: run `yum
 
 echo "runtime_security_config.enabled: true" >> /etc/datadog-agent/security-agent.yaml
 echo "runtime_security_config.enabled: true" >> /etc/datadog-agent/system-probe.yaml
-  
+
 # For [Datadog Agent][1] version 7.36 only, to enable the collection of CWS network events
 echo "runtime_security_config.network.enabled: true" >> /etc/datadog-agent/system-probe.yaml
-  
+
 systemctl restart datadog-agent
 
 {{< /code-block >}}
